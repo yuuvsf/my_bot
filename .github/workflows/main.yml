@@ -19,5 +19,5 @@ jobs:
       - name: Install dependencies
         run: pip install telethon
       - name: Run Userbot
-        run: python bot.py
+        run: python main.py
         timeout-minutes: 350 # GitHub Actions bitta sessiyada 6 soatgacha ruxsat beradi
