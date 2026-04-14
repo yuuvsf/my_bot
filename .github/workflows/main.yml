@@ -1,0 +1,23 @@
+name: Telegram Userbot 24/7
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 */6 * * *' # Har 6 soatda qayta ishga tushadi (o'chib qolmasligi uchun)
+  workflow_dispatch: # Qo'lda yoqish uchun
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install telethon
+      - name: Run Userbot
+        run: python bot.py
+        timeout-minutes: 350 # GitHub Actions bitta sessiyada 6 soatgacha ruxsat beradi
